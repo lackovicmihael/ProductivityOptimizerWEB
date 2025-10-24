@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to Productivity Optimizer</h1>
+    <p>Stay focused, organized, and motivated with our simple tools.</p>
+    <div class="cta-buttons">
+        <a href="{% url 'timer' %}" class="btn">Pomodoro Timer & Tasks</a>
+        <a href="{% url 'quotes' %}" class="btn">Motivational Quotes</a>
+    </div>
+</div>
+{% endblock %}

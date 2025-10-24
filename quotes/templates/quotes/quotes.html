@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Motivational Quotes</h1>
+<div id="random-quote">
+    <p>{{ random_quote.text }}</p>
+    <p>- {{ random_quote.author }}</p>
+</div>
+<form method="post" action="{% url 'add_quote' %}">
+    {% csrf_token %}
+    <textarea name="text" placeholder="Add a new quote" required></textarea>
+    <input type="text" name="author" placeholder="Author (optional)">
+    <button type="submit" class="btn">Add Quote</button>
+</form>
+<h2>All Quotes</h2>
+<ul class="quote-list">
+    {% for quote in quotes %}
+    <li>
+        <p>{{ quote.text }}</p>
+        <p>- {{ quote.author }}</p>
+        <a href="{% url 'delete_quote' quote.id %}" class="btn-delete">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
